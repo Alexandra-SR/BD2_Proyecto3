@@ -14,7 +14,7 @@
       letter-spacing: -1px;
   }
   a {
-    color: #5469d4;
+    color: #54d4a9;
     text-decoration: unset;
   }
   .login-root {
@@ -66,19 +66,19 @@
       box-shadow: inset 0 0 0 2px #e3e8ee;
   }
   .box-background--blue {
-      background-color: #5469d4;
+      background-color: #54d48e;
   }
   .box-background--white {
     background-color: #ffffff; 
   }
   .box-background--blue800 {
-      background-color: #212d63;
+      background-color: #216363;
   }
   .box-background--gray100 {
       background-color: #e3e8ee;
   }
   .box-background--cyan200 {
-      background-color: #7fd3ed;
+      background-color: #7fedc8;
   }
   .padding-top--64 {
     padding-top: 64px;
@@ -111,13 +111,13 @@
       max-width: 448px;
       background: white;
       border-radius: 4px;
-      box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+      box-shadow: rgba(60, 87, 85, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
   }
   span {
       display: block;
       font-size: 20px;
       line-height: 28px;
-      color: #1a1f36;
+      color: #1a3636;
   }
   label {
       margin-bottom: 10px;
@@ -150,7 +150,7 @@
       box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                  rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, 
+                  rgba(60, 86, 87, 0.16) 0px 0px 0px 1px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px;
@@ -184,20 +184,20 @@
 }
 
 button.btn.btn-primary{
-  background: rgb(84, 105, 212);
+  background: rgb(84, 212, 184);
 
 }
 
 
   button[type="button"] {
-      background-color: rgb(84, 105, 212);
+      background-color: rgb(84, 212, 148);
       box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, 
-                  rgb(84, 105, 212) 0px 0px 0px 1px, 
+                  rgb(0, 136, 106) 0px 0px 0px 1px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
                   rgba(0, 0, 0, 0) 0px 0px 0px 0px, 
-                  rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+                  rgba(60, 87, 80, 0.08) 0px 2px 5px 0px;
       color: #fff;
       font-weight: 600;
       cursor: pointer;
