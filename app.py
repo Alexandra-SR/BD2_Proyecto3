@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, Response
 import sys
 import os 
-from clean_tweets import find_tweetids  as ssearch
+#from clean_tweets import find_tweetids  as ssearch
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 app = Flask(__name__)

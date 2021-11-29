@@ -21,6 +21,17 @@
       </thead>
       <tbody>
         <ul class="list-group">
+          {% for i in 0..5 %}
+          <tr>
+            <td>{{}}</td>
+            <td>{{docid}}</td>
+          </tr>
+          {% endfor %}
+        </ul>
+      </tbody>
+      <!--
+      <tbody>
+        <ul class="list-group">
           {% for tweet, docid in mensaje %}
           <tr>
             <td>{{tweet}}</td>
@@ -29,7 +40,7 @@
           {% endfor %}
         </ul>
       </tbody>
-
+-->
       <tbody></tbody>
     </table>
   </div>
