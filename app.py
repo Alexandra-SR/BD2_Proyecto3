@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, Response
 import sys
 import os 
-#from clean_tweets import find_tweetids  as ssearch
+import face_recognition_project as fr
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 app = Flask(__name__)
@@ -18,13 +18,18 @@ def result():
 @app.route('/', methods = ['GET', 'POST'])
 def buscar():
    ans = []
+   img = request.files['avatar']
+   print(img)
    if request.method == 'POST':
-      linea = request.form['searchString']
-      cantidad = request.form['cantidad']
-      #ans = ssearch(str(linea), int(cantidad))
-      print(ans)
-      
-   
+      if request.form['colorRadio'] == 'knn':
+         cantidad = request.form['cantidad']
+         ans = fr.knn_search_rtree(int(cantidad), img)
+         print(ans)
+      elif request.form['colorRadio'] == 'ratio':
+         radio = request.form['radio_busqueda']
+         ans = fr.range_search(int(radio), img)
+         print(ans)
+                
    return render_template('resultados.html', mensaje=ans)
 
 if __name__ == '__main__':

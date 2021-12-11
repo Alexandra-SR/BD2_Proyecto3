@@ -11,36 +11,23 @@
   <br />
   <h1>Resultados de la busqueda</h1>
   <br />
+  <img
+    src="static\lfw\lfw\Aaron_Eckhart\Aaron_Eckhart_0001.jpg"
+    width="500"
+    height="600"
+  />
   <div class="table-wrapper">
     <table class="fl-table">
-      <thead>
-        <tr>
-          <th>Tweet ID</th>
-          <th>Tweet</th>
-        </tr>
-      </thead>
+      <thead></thead>
       <tbody>
         <ul class="list-group">
-          {% for i in 0..5 %}
+          {% for path in mensaje %}
           <tr>
-            <td>{{}}</td>
-            <td>{{docid}}</td>
+            <img src="{{path}}" width="500" height="600" />
           </tr>
           {% endfor %}
         </ul>
       </tbody>
-      <!--
-      <tbody>
-        <ul class="list-group">
-          {% for tweet, docid in mensaje %}
-          <tr>
-            <td>{{tweet}}</td>
-            <td>{{docid}}</td>
-          </tr>
-          {% endfor %}
-        </ul>
-      </tbody>
--->
       <tbody></tbody>
     </table>
   </div>

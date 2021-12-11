@@ -4,15 +4,12 @@
     <meta charset="utf-8" />
     <title>Reconocimiento Facial</title>
     <link rel="stylesheet" href="../static/css/style.css" />
-    <script src=
-    "https://code.jquery.com/jquery-1.12.4.min.js">
-        </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <style type="text/css">
       .selectt {
-          display: none;
-              }
-      
+        display: none;
+      }
     </style>
   </head>
 
@@ -150,55 +147,71 @@
           <div class="formbg-outer">
             <div class="formbg">
               <div class="formbg-inner padding-horizontal--48">
-               
-              <span class="padding-bottom--15">Suba la imagen con la que desea encontrar similitudes</span>
-                <input type="file" id="avatar" name="avatar" >
-              
-              <div class="field padding-bottom--24">
-              </div>
-              
-                <form method="post">
+                <span class="padding-bottom--15"
+                  >Suba la imagen con la que desea encontrar similitudes</span
+                >
+                <form method="POST" enctype="multipart/form-data">
+                  <input type="file" id="avatar" name="avatar" />
+
+                  <div class="field padding-bottom--24"></div>
+
                   <span class="padding-bottom--15"
                     >Seleccione el tipo de búsqueda</span
                   >
 
                   <div>
                     <label>
-                        <input type="radio" name="colorRadio" 
-                               value="knn"> KNN: Vecinos más cercanos</label>
+                      <input
+                        type="radio"
+                        name="colorRadio"
+                        id="knn"
+                        value="knn"
+                      />
+                      KNN: Vecinos más cercanos</label
+                    >
                     <label>
-                        <input type="radio" name="colorRadio" 
-                               value="ratio"> Búsqueda por Rango </label>
-                </div>
-
-                <div class="knn selectt">
-                  <span class="padding-bottom--15"
-                    >Ingrese la cantidad de respuestas 
-                  </span>
-                  <div class="field padding-bottom--24">
-                    <input type="text" id="cantidad" name="cantidad" />
+                      <input
+                        type="radio"
+                        name="colorRadio"
+                        id="rango"
+                        value="ratio"
+                      />
+                      Búsqueda por Rango
+                    </label>
                   </div>
-                </div>
 
-                <div class="ratio selectt">
-                  <span class="padding-bottom--15"
-                    >Ingrese el radio que desee 
-                  </span>
-                  <div class="field padding-bottom--24">
-                    <input type="text" id="radio_busqueda" name="radio_busqueda" />
-                  </div>                 
-                </div>
+                  <div class="knn selectt">
+                    <span class="padding-bottom--15"
+                      >Ingrese la cantidad de respuestas
+                    </span>
+                    <div class="field padding-bottom--24">
+                      <input type="text" id="cantidad" name="cantidad" />
+                    </div>
+                  </div>
 
-                <script type="text/javascript">
-                  $(document).ready(function() {
-                      $('input[type="radio"]').click(function() {
-                          var inputValue = $(this).attr("value");
-                          var targetBox = $("." + inputValue);
-                          $(".selectt").not(targetBox).hide();
-                          $(targetBox).show();
+                  <div class="ratio selectt">
+                    <span class="padding-bottom--15"
+                      >Ingrese el radio que desee
+                    </span>
+                    <div class="field padding-bottom--24">
+                      <input
+                        type="text"
+                        id="radio_busqueda"
+                        name="radio_busqueda"
+                      />
+                    </div>
+                  </div>
+
+                  <script type="text/javascript">
+                    $(document).ready(function () {
+                      $('input[type="radio"]').click(function () {
+                        var inputValue = $(this).attr("value");
+                        var targetBox = $("." + inputValue);
+                        $(".selectt").not(targetBox).hide();
+                        $(targetBox).show();
                       });
-                  });
-              </script>
+                    });
+                  </script>
 
                   <div
                     class="
