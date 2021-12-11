@@ -21,7 +21,7 @@ def buscar():
    if request.method == 'POST':
       linea = request.form['searchString']
       cantidad = request.form['cantidad']
-      ans = ssearch(str(linea), int(cantidad))
+      #ans = ssearch(str(linea), int(cantidad))
       print(ans)
       
    

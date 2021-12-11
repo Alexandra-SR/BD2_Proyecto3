@@ -2,7 +2,8 @@ from rtree import index
 import face_recognition
 from pathlib import Path
 import heapq
-
+import glob
+from queue import PriorityQueue
 """"
 - Extracción de características 
 - Indexación de vectores característicos para búsquedas eficientes
@@ -77,4 +78,58 @@ def knn_search_rtree(k, Q):
         coordinatesListQuery.append(i)
     return list(Rtree.nearest(coordinatesListQuery, k, 'raw'))
 
+def range_search(image_name, r):
+    images = read_encoding()
+    image = face_recognition.load_image_file(image_name)
+    image_encoding = face_recognition.face_encodings(image)[0]
+    image_encoding = [image_encoding]
+    result = []
+    for i in images:
+        if len(images[i])>0:
+            image_compare_encoding = images[i]
+            dist = face_recognition.face_distance(image_encoding, image_compare_encoding)
+            if dist < r:
+                result.append(i)
+    return result
 
+def knn_search(image_name, k):
+    images = read_encoding()
+    image = face_recognition.load_image_file(image_name)
+    image_encoding = face_recognition.face_encodings(image)[0]
+    image_encoding = [image_encoding]
+    result = PriorityQueue()
+    for i in images:
+        if len(images[i])>0:
+            image_compare_encoding = images[i]
+            dist = face_recognition.face_distance(image_encoding, image_compare_encoding)
+            result.put((dist, i))
+    result_final = []
+    for i in range(k):
+        result_final.append(result.get())
+    return result_final
+
+def read_encoding():
+    dic = {}
+    with open('encodings.txt', 'r') as f:
+        for i in f.readlines():
+            i.split(',')
+            lista = []
+            for j in i[1:]:    
+                lista.append(float(j))
+            dic[i[0]] = lista
+    return dic
+
+def write_encodings():
+    images = glob.glob("C:\\Users\\lojaz\\Desktop\\BD2_Proyecto3\\lfw\\lfw\\*\\*")
+    images = images[:100]
+    with open('encodings.txt', 'a') as f:   
+        for i in images:
+            image = face_recognition.load_image_file(i)           
+            if len(face_recognition.face_encodings(image))>0:
+                image_encoding = face_recognition.face_encodings(image)[0]              
+                #f.write(i.split('\\')[7] + ',')
+                f.write(i + ',')
+                for j in image_encoding:
+                    f.write(str(j)+',')
+                f.write('\n')
+            
