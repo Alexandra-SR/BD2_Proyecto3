@@ -86,5 +86,5 @@ def write_encodings():
                     f.write(str(j)+',')
                 f.write('\n')
 
-build()           
+#build()           
 #print(range_search(0.01, 'C:\\Users\\lojaz\\Desktop\\BD2_Proyecto3\\lfw\\lfw\\Abba_Eban\\Abba_Eban_0001.jpg'))
