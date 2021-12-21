@@ -61,11 +61,29 @@ El procedimiento general consiste en lo siguiente:
 Para la extracción de características se usará la librería Face_Recognition. En dicha librería ya se encuentra implementado las técnicas necesarias para obtener de cada imagen una representación  compacta  del  rostro  (enconding).  El  tamaño  del  vector característico es de 128 . La efectividad del reconocimiento ha sido probada 
 con modelos de búsqueda basados en deep learning (99.38% de precisión).
 
+Se usa face embedding en el que cada cara es convertida en un vector, esta técnica es llamada deep metric learning.
+Primero se detecta la cara en la imagen, una vez que se sabe la ubicación exacta de la cara, usaremos esa parte de la imagen para extraer los features (características).  Para lo cual, se usa face embeddings.  Una red neuronal toma una imagen como input y da como output un vector que representa las características del rostro.
+En el caso de la librería face_recognition, se usa la función face_encodings, la cual dada una imagen, retorna un face encoding de 128 dimensiones para cada cara en la imagen. 
+
+```
+
+def face_encodings(face_image, known_face_locations=None, num_jitters=1, model="small"):
+    """
+    Given an image, return the 128-dimension face encoding for each face in the image.
+
+    :param face_image: The image that contains one or more faces
+    :param known_face_locations: Optional - the bounding boxes of each face if you already know them.
+    :param num_jitters: How many times to re-sample the face when calculating encoding. Higher is more accurate, but slower (i.e. 100 is 100x slower)
+    :param model: Optional - which model to use. "large" or "small" (default) which only returns 5 points but is faster.
+    :return: A list of 128-dimensional face encodings (one for each face in the image)
+    """
+```
+
 
 
 - **Indexación de vectores característicos para búsquedas eficientes**
 - **Algoritmo de búsqueda**
-- 
+
 - **Construcción del Índice**
   - Estructurar el índice invertido para guardar los pesos TF-IDF.  
   - Calcular  una  sola  vez  la  longitud  de  cada  documento  (norma)  y  guardarlo  para  ser 
@@ -75,8 +93,7 @@ con modelos de búsqueda basados en deep learning (99.38% de precisión).
   - La consulta es una frase en lenguaje natural.  
   - El scoring se obtiene aplicando la similitud de coseno sobre el índice invertido en 
   memoria secundaria. 
-  - La función de recuperac
-  ión debe retornar una lista ordenada de documentos que se 
+  - La función de recuperación debe retornar una lista ordenada de documentos que se 
   aproximen a la consulta. 
 
 
