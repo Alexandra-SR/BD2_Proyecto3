@@ -156,10 +156,8 @@ def range_search(r, image_name):
             if dist < r:
                 result.append(i)
     return result
-
+  ```
     
-    ```
-  
 - **Consultas**
   1. Para realizar una consulta lo primero que hacemos es tokenizar la query.
   2. Calculamos los scores para cada palabra.
