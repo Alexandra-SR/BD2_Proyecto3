@@ -25,7 +25,7 @@ recuperación eficiente de imágenes en un servicio web de reconocimiento facial
 - **Ejemplo**:
 **_Carpeta de imagenes_**
 <figure class="image" align="center">
-  <img src="images/carpeta.png" width="70%" height="60%" style="text-align:center;">
+  <img src="images/carpeta.png" width="30%" height="30%" style="text-align:center;">
 </figure>
 
 **_Resultados esperados:_** 
