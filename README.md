@@ -162,11 +162,11 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
   ```
     
 - **Consultas**
-  1. Para realizar una consulta lo primero que hacemos es tokenizar la query.
-  2. Calculamos los scores para cada palabra.
-  3. Después de procesar la query, vamos sacando la similitud de coseno entre esta y la información que vamos leyendo de los índices invertidos guardados en memoria secundaria.
-  4. Ordenamos los resultados de acuerdo al score obtenido por cada documento.
-  5. Devolvemos los k resultados más relevantes a la consulta.
+  1. Para realizar una consulta lo primero que hacemos es realizar el encoding mediante vectores característicos de la imagen con la que se desea realizar la búsqueda.
+  2. El dataset de imagenes fue previamente encodeada. 
+  3. Después de procesar la query, vamos sacando la similitud entre esta y las imagenes previamente encodeadas.
+  4. Ordenamos los resultados de acuerdo al score de similitud obtenido .
+  5. Devolvemos los resultados más relevantes a la consulta de acuerdo a los parámetros ingresados.
 
 
 ###  Vistas de plataforma web 
