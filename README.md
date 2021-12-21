@@ -132,30 +132,30 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
 - **Búsqueda Knn con R Tree :**
 
   ```
-def knn_search_rtree(k, image_name):
-    image = face_recognition.load_image_file(image_name)
-    Q = face_recognition.face_encodings(image)[0]
-    return list(Rtree.nearest(list(Q), k, 'raw'))
-    
-    ```
+    def knn_search_rtree(k, image_name):
+        image = face_recognition.load_image_file(image_name)
+        Q = face_recognition.face_encodings(image)[0]
+        return list(Rtree.nearest(list(Q), k, 'raw'))
+
+  ```
     
     
  - **Búsqueda por rango :**
 
   ```
-def range_search(r, image_name):
-    images = read_encoding()
-    image = face_recognition.load_image_file(image_name)
-    image_encoding = face_recognition.face_encodings(image)[0]
-    image_encoding = [image_encoding]
-    result = []
-    for i in images:
-        if len(images[i])>0:
-            image_compare_encoding = images[i]
-            dist = face_recognition.face_distance(np.array(image_encoding), np.array(image_compare_encoding))
-            if dist < r:
-                result.append(i)
-    return result
+    def range_search(r, image_name):
+        images = read_encoding()
+        image = face_recognition.load_image_file(image_name)
+        image_encoding = face_recognition.face_encodings(image)[0]
+        image_encoding = [image_encoding]
+        result = []
+        for i in images:
+            if len(images[i])>0:
+                image_compare_encoding = images[i]
+                dist = face_recognition.face_distance(np.array(image_encoding), np.array(image_compare_encoding))
+                if dist < r:
+                    result.append(i)
+        return result
   ```
     
 - **Consultas**
