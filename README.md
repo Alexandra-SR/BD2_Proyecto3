@@ -172,8 +172,14 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
 ###  Vistas de plataforma web 
 **Buscador**
 <figure class="image" align="center">
-  <img src="images/buscador.png" width="70%" height="60%" style="text-align:center;">
+  <img src="images/web.png" width="70%" height="60%" style="text-align:center;">
 </figure>
+
+**Selección de tipo de búsqueda**
+<figure class="image" align="center">
+  <img src="images/seleccion.png" width="70%" height="60%" style="text-align:center;">
+</figure>
+
 
 **Resultados**
 <figure class="image" align="center">
