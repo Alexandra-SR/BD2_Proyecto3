@@ -19,16 +19,13 @@ def result():
 def buscar():
    ans = []
    img = request.files['avatar']
-   print(img)
    if request.method == 'POST':
       if request.form['colorRadio'] == 'knn':
          cantidad = request.form['cantidad']
          ans = fr.knn_search_rtree(int(cantidad), img)
-         print(ans)
       elif request.form['colorRadio'] == 'ratio':
          radio = request.form['radio_busqueda']
-         ans = fr.range_search(int(radio), img)
-         print(ans)
+         ans = fr.range_search(float(radio), img)
                 
    return render_template('resultados.html', mensaje=ans)
 

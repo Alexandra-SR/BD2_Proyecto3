@@ -11,24 +11,12 @@
   <br />
   <h1>Resultados de la busqueda</h1>
   <br />
-  <img
-    src="static\lfw\lfw\Aaron_Eckhart\Aaron_Eckhart_0001.jpg"
-    width="500"
-    height="600"
-  />
-  <div class="table-wrapper">
-    <table class="fl-table">
-      <thead></thead>
-      <tbody>
-        <ul class="list-group">
-          {% for path in mensaje %}
-          <tr>
-            <img src="{{path}}" width="500" height="600" />
-          </tr>
-          {% endfor %}
-        </ul>
-      </tbody>
-      <tbody></tbody>
-    </table>
+  <div class="row">
+    {% for path in mensaje %}
+    <div class="column">
+      <img src="{{path}}" style="width: 100%" />
+      <p>{{path}}</p>
+    </div>
+    {% endfor %}
   </div>
 </html>
