@@ -107,7 +107,6 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
 
 ###  KNN SEARCH 💯
 
-**_Índice Invertido_**: En este método organizamos los registros de acuerdo a un valor de sus campos, para este caso usaremos el campo **Id** como key.
 
 - **Búsqueda Knn con fila prioridad :**
 
@@ -138,7 +137,9 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
         return list(Rtree.nearest(list(Q), k, 'raw'))
 
   ```
-    
+
+###  RANGE SEARCH 💯
+
     
  - **Búsqueda por rango :**
 
@@ -177,7 +178,7 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
   <img src="images/resultados.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
-## Anaálisis de resultados 🚀
+## Análisis de resultados 🚀
 **Tabla de resultados*
 <figure class="image" align="center">
   <img src="images/tabla.png" width="70%" height="60%" style="text-align:center;">
