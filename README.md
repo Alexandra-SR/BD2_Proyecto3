@@ -53,10 +53,19 @@ Probar  el  desempeño  del  índice  invertido,  mediante una plataforma web (f
 
 ## Descripción de las técnicas 
 
-- **Preprocesamiento:** 
-  - Tokenization 
-  - Filtrar Stopwords 
-  - Reducción de palabras (Stemming) 
+Implementación de una plataforma web  para  la  identificación  automática  de  personas  a  partir  de  una colección grande de imágenes de rostros. 
+El procedimiento general consiste en lo siguiente: 
+
+- **Extracción de características**
+
+Para la extracción de características se usará la librería Face_Recognition. En dicha librería ya se encuentra implementado las técnicas necesarias para obtener de cada imagen una representación  compacta  del  rostro  (enconding).  El  tamaño  del  vector característico es de 128 . La efectividad del reconocimiento ha sido probada 
+con modelos de búsqueda basados en deep learning (99.38% de precisión).
+
+
+
+- **Indexación de vectores característicos para búsquedas eficientes**
+- **Algoritmo de búsqueda**
+- 
 - **Construcción del Índice**
   - Estructurar el índice invertido para guardar los pesos TF-IDF.  
   - Calcular  una  sola  vez  la  longitud  de  cada  documento  (norma)  y  guardarlo  para  ser 
