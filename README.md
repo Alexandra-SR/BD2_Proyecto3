@@ -179,12 +179,12 @@ Probar  el  desempeño  del  índice  invertido,  mediante una plataforma web (f
 ## Anaálisis de resultados 🚀
 **Tabla de resultados*
 <figure class="image" align="center">
-  <img src="images/tabla .png" width="70%" height="60%" style="text-align:center;">
+  <img src="images/tabla.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
 **Gráfico de resultados**
 <figure class="image" align="center">
-  <img src="images/grafico .png" width="70%" height="60%" style="text-align:center;">
+  <img src="images/grafico.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
 
