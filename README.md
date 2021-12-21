@@ -176,9 +176,18 @@ Probar  el  desempeño  del  índice  invertido,  mediante una plataforma web (f
   <img src="images/resultados.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
-## Evidencias 🚀
+## Anaálisis de resultados 🚀
+**Tabla de resultados*
+<figure class="image" align="center">
+  <img src="images/tabla .png" width="70%" height="60%" style="text-align:center;">
+</figure>
 
-* [Video](https://drive.google.com/drive/folders/120QQzzBZWRGeH2MJdfYNc15avekUYLPz?usp=sharing) 
+**Gráfico de resultados**
+<figure class="image" align="center">
+  <img src="images/grafico .png" width="70%" height="60%" style="text-align:center;">
+</figure>
+
+
 
 ## Licencia 📄
 Universidad de Ingenieria y Tecnología - UTEC
