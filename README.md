@@ -82,72 +82,82 @@ def face_encodings(face_image, known_face_locations=None, num_jitters=1, model="
 
 
 - **Indexación de vectores característicos para búsquedas eficientes**
+
+Para realizar búsquedas eficientes, se hara uso de una librería de índice espacial R Tree de Python para indexar todos 
+los vectores característicos que serán extraídos de cada imagen de la colección.  
+ 
 - **Algoritmo de búsqueda**
 
-- **Construcción del Índice**
-  - Estructurar el índice invertido para guardar los pesos TF-IDF.  
-  - Calcular  una  sola  vez  la  longitud  de  cada  documento  (norma)  y  guardarlo  para  ser 
-  utilizado al momento de aplicar la similitud de coseno. 
-  - Construcción del índice en memoria secundaria para grandes colecciones de datos.   
+- Implementación de algoritmo de búsqueda sin indexación ( Búsqueda KNN con cola de prioridad)  el cual recibe como input la imagen de 
+consulta y la cantidad de objetos a recuperar K.
+
+- Implementación de algoritmo de búsqueda con indexación ( Búsqueda KNN RTree)  el cual recibe como input la imagen de 
+consulta y la cantidad de objetos a recuperar K.
+
+- Implementación de  algoritmo de búsqueda con indexación ( Búsqueda por Rango )  el cual recibe como input la imagen de 
+consulta y el rango r. 
+
+
 - **Consulta** 
-  - La consulta es una frase en lenguaje natural.  
-  - El scoring se obtiene aplicando la similitud de coseno sobre el índice invertido en 
-  memoria secundaria. 
-  - La función de recuperación debe retornar una lista ordenada de documentos que se 
-  aproximen a la consulta. 
+
+Desarrollo de una aplicación frontend que permita interactuar con el web service de 
+reconocimiento  facial.    La  consulta  es  una  imagen   y 
+debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  más  parecidas?
 
 
-###  ÍNDICE INVERTIDO  💯
+###  KNN SEARCH 💯
 
 **_Índice Invertido_**: En este método organizamos los registros de acuerdo a un valor de sus campos, para este caso usaremos el campo **Id** como key.
 
-- **Construcción del índice invertido:**
+- **Búsqueda Knn con fila prioridad :**
 
-  1.  Recorremos los archivos con la data y los leemos como diccionarios.
-  2.  Para cada tweet sacamos las palabras y las llevamos a su forma raíz, pero antes se eliminan los signos de puntuación y emojis. Después, devolvemos una lista que contiene a cada palabra con el número de veces que aparece(tf-term frequency).
-  3.  Posteriormente, calculamos el score tfidf para cada palabra, 
-  4.  Finalmente escribimos un índice invertido en memoria secundaria cada 5 documentos. 
   ```
-  def json_tweets_to_dic():
-    tf = []
-    for filename in archivos:
-        lista = []
-        if filename.endswith(".json") :
-            with open(input_directory + '\\' + filename, 'r', encoding='utf-8') as all_tweets:
-                all_tweets_dictionary = json.load(all_tweets)
-                for tweet in all_tweets_dictionary:
-                    temp = readFile(all_tweets_dictionary[tweet])
-                    lista.append(temp)
-                tf.append(merge(lista))
-    tfidf(tf)
+   def knn_search(k, image_name):
+       images = read_encoding()
+       image = face_recognition.load_image_file(image_name)
+       image_encoding = face_recognition.face_encodings(image)[0]
+       image_encoding = [image_encoding]
+       result = PriorityQueue()
+       for i in images:
+           if len(images[i])>0:
+               image_compare_encoding = images[i]
+               dist = face_recognition.face_distance(np.array(image_encoding), np.array(image_compare_encoding))
+               result.put((dist, i))
+       result_final = []
+       for i in range(k):
+           result_final.append(result.get()[1])
+       return result_final 
     ```
-- **Manejo de memoria secundaria**
-  1. Para leer los archivos con tweets, necesitamos leer todos los documentos que los contengan.
-  2. Al haber gran cantidad de información necesitamos almacenar esta en distintos bloques por lo que escribimos un índice invertido para 5 documentos como máximo.
-  3. Al momento de buscar, necesitamos leer la infomración que tenemos en los índices por lo que toca ir añadiendolos a memoria principal.
-  ```
-  def tfidf(tf):
-    lista = {}
-    it = 0
-    for i in tf:
-        for k in i:
-            wtfidf = math.log(1 + i[k]) * math.log(len(tf)/df(k, tf))
-            if k in lista:
-                lista[k] = str(lista[k]) + ";" + str(archivos[it]) + "," + str(wtfidf)             
-            else:
-                lista[k] = str(archivos[it]) + "," + str(wtfidf)
-        it += 1            
-        if(it % 5 == 0):
-            writeblock(lista, it/5)
-            lista = {}
     
-    writeblock(lista, math.ceil(it/5))
+- **Búsqueda Knn con R Tree :**
 
-  def writeblock(lista, c):
-    nombre = "index" + str(int(c)) + ".txt"
-    with open(nombre, 'a', encoding='utf-8') as data:
-        for k in lista:
-            data.write(k + ':'+ lista[k] + '\n')
+  ```
+def knn_search_rtree(k, image_name):
+    image = face_recognition.load_image_file(image_name)
+    Q = face_recognition.face_encodings(image)[0]
+    return list(Rtree.nearest(list(Q), k, 'raw'))
+    
+    ```
+    
+    
+ - **Búsqueda por rango :**
+
+  ```
+def range_search(r, image_name):
+    images = read_encoding()
+    image = face_recognition.load_image_file(image_name)
+    image_encoding = face_recognition.face_encodings(image)[0]
+    image_encoding = [image_encoding]
+    result = []
+    for i in images:
+        if len(images[i])>0:
+            image_compare_encoding = images[i]
+            dist = face_recognition.face_distance(np.array(image_encoding), np.array(image_compare_encoding))
+            if dist < r:
+                result.append(i)
+    return result
+
+    
     ```
   
 - **Consultas**
@@ -156,36 +166,7 @@ def face_encodings(face_image, known_face_locations=None, num_jitters=1, model="
   3. Después de procesar la query, vamos sacando la similitud de coseno entre esta y la información que vamos leyendo de los índices invertidos guardados en memoria secundaria.
   4. Ordenamos los resultados de acuerdo al score obtenido por cada documento.
   5. Devolvemos los k resultados más relevantes a la consulta.
-  ```
-  def search(query, k):
-    tf = readFile(query)
-    dic = {}
-    inverted = readInverted()
-    scores = {}
-    lenght1 = {}
-    for i in archivos:
-        scores[i] = 0
-        lenght1[i] = 0
-    lenght2 = 0
-    for i in tf:
-        wtfidf = math.log(1 + tf[i]) * math.log(len(archivos)/df_ind(i, inverted))
-        dic[i] = wtfidf
-        lenght2 = lenght2 + wtfidf**2
-        values = inverted[i].split(';')
-        for j in values:
-            j = j.split(',')
-            lenght1[j[0]] = lenght1[j[0]] + float(j[1])**2
-            scores[j[0]] = scores[j[0]] + float(j[1])*wtfidf
-    lenght2 = lenght2**0.5
-    for i in lenght1:
-        if lenght1[i] != 0:
-            lenght1[i] = lenght1[i]**0.5
-    for i in scores:
-        if lenght1[i] != 0:
-            scores[i] = scores[i]/(lenght1[i]*lenght2)
-    orderedDic = sorted(scores.items(), key=lambda it: it[1], reverse=True)
-    return orderedDic[:k]
-    ```
+
 
 ###  Vistas de plataforma web 
 **Buscador**
