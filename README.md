@@ -37,13 +37,9 @@ Probar  el  desempeño  del  índice  invertido,  mediante una plataforma web (f
 ### Pre-requisitos 📋
 * [Python](https://www.python.org/downloads/) 
 #### Librerías
-* [Json](https://docs.python.org/3/library/json.html)
-* [flask](https://flask.palletsprojects.com/en/2.0.x/)
-* [nltk](https://www.nltk.org/)
-* [collections](https://docs.python.org/3/library/collections.html)
-* [emoji](https://pypi.org/project/emoji/)
-* [math](https://docs.python.org/3/library/math.html)
-* [re](https://docs.python.org/3/library/re.html)
+* [Face Recognition](https://github.com/ageitgey/face_recognition)
+* [R Tree](https://rtree.readthedocs.io/en/latest/)
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 
 
 ### Despliegue 📦
