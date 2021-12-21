@@ -23,8 +23,10 @@ recuperación eficiente de imágenes en un servicio web de reconocimiento facial
 
 
 - **Ejemplo**:
-
-
+**_Carpeta de imagenes_**
+<figure class="image" align="center">
+  <img src="images/carpeta.png" width="70%" height="60%" style="text-align:center;">
+</figure>
 
 **_Resultados esperados:_** 
 Probar  el  desempeño  del  índice  invertido,  mediante una plataforma web (frontend y backend)  que permita interactuar con las principales operaciones del índice invertido:  
@@ -170,7 +172,7 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
 ###  Vistas de plataforma web 
 **Buscador**
 <figure class="image" align="center">
-  <img src="images/buscador .png" width="70%" height="60%" style="text-align:center;">
+  <img src="images/buscador.png" width="70%" height="60%" style="text-align:center;">
 </figure>
 
 **Resultados**
