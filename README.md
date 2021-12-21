@@ -21,23 +21,10 @@ recuperación eficiente de imágenes en un servicio web de reconocimiento facial
 
 **_Descripción del dominio:_** Se  usará  una  colección con  más  de  13  mil  imágenes  de  [rostros  de  personas](http://vis-www.cs.umass.edu/lfw/). Algunas  personas  tienen  más  de  una  imagen  asociada, se consideran todas.  
 
-- **Id**: Número de identificación del id.
-- **Date**:  Fecha de de publicación del tweet.
-- **Text**: Contenido del tweet.
-- **User_id**: Id del usuario que escribió el tweet.
-- **User_name**: Nombre de usuario de la persona que tweeteo.
-- **Location**: Desde donde fue enviado el tweet.
-- **Retweeted** : Valor booleano para para identificar si fue retweeteado o no.
-- **RT_text**: Contenido del retweet.
-- **RT_user_id**: Id del usuario que retweeteó el tweet.
-- **RT_user_name** : Nombre de usuario de la persona que retweeteó.
 
 - **Ejemplo**:
 
-````json
-{"id": 1026814183042686976,"date": "Tue Aug 07 12:55:53 +0000 2018", "text": "RT @de_patty: Asuuuuuuu..  @Renzo_Reggiardo me da mala espina...su pasado fujimorísta qué miedo!!!y @luchocastanedap hijo de corrupto que s…", "user_id": 544008122,"user_name": "@CARLOSPUEMAPE1", "location": {}, "retweeted": true,"RT_text": "Asuuuuuuu..  @Renzo_Reggiardo me da mala espina...su pasado fujimorísta qué miedo!!!y @luchocastanedap hijo de corrupto que secunda lo del padre NI HABLAR! Más comunicore Plop!lideran las preferencias para la alcaldía de Lima, según Ipsos | RPP Noticias https://t.co/w5TnU0Dmwq", "RT_user_id": 302995560, "RT_user_name": "@de_patty"}
- 
-````
+
 
 **_Resultados esperados:_** 
 Probar  el  desempeño  del  índice  invertido,  mediante una plataforma web (frontend y backend)  que permita interactuar con las principales operaciones del índice invertido:  
