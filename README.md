@@ -181,11 +181,6 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
 </figure>
 
 
-**Resultados**
-<figure class="image" align="center">
-  <img src="images/resultados.png" width="70%" height="60%" style="text-align:center;">
-</figure>
-
 ## Análisis de resultados 🚀
 **Tabla de resultados*
 <figure class="image" align="center">
