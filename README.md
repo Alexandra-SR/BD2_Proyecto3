@@ -193,6 +193,9 @@ debe  responder  a  las  preguntas  del  tipo  ¿Quiénes  son  las  personas  m
 </figure>
 
 
+## Presentación
+
+[Diapositivas](https://docs.google.com/presentation/d/10Wan-KfoPy2t45w_nVEDDtXCdFiDYUdZfAf_FDNC4mI/edit?usp=sharing)
 
 ## Licencia 📄
 Universidad de Ingenieria y Tecnología - UTEC
